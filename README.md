@@ -11,10 +11,10 @@ Users can sign up, login, view and post photos, search and follow other users.
 ## Screenshots 
 ###### User Signup
  
-<img src="">
+<img src="https://github.com/Joseph-Odhiambo/Insta-clone/blob/master/static/images/signup.png?raw=true">
  
  ###### User Login
- <img src=""> 
+ <img src="https://github.com/Joseph-Odhiambo/Insta-clone/blob/master/static/images/login.png?raw=true"> 
 
 
  

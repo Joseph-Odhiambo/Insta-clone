@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from instagram.views import PostLikeToggle, PostLikeAPIToggle
+from .views import PostLikeToggle, PostLikeAPIToggle
 from . import views
 # from django.contrib.auth import views as signup
 

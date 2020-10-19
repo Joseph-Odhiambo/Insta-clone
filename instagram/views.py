@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)

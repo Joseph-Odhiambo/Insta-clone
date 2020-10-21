@@ -1,6 +1,7 @@
 {% load static %}
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="/static/images/icon/insta.png" type="image/x-icon">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144351462-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -20,6 +21,13 @@
 </head>
 <body>
 {% include 'instagram/navbar.html' %}
+{% if messages %}
+                        {% for message in messages %}
+                                <div class="alert aleret-{{ message.tags}}">
+                                        {{ message }}
+                                </div>
+                        {% endfor %}
+                {% endif %}
 {% block content %}
 
 {% endblock %}

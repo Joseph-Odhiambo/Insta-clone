@@ -22,4 +22,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path(r'admin/', admin.site.urls),
     path('', include('instagram.urls'))
+    
 ]

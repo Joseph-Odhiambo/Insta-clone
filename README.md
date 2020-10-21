@@ -37,7 +37,7 @@ To get the project .......
 ```
 ##### Navigate into the folder and install requirements  
  ```bash 
-cd insta-lite pip install -r requirements.txt 
+cd Insta-clone pip install -r requirements.txt 
 ```
 ##### Install and activate Virtual  
  ```bash 
@@ -82,7 +82,7 @@ Open the application on your browser `127.0.0.1:8000`.
 * There are no known bugs currently but pull requests are allowed incase you spot a bug  
   
 ## Contact Information   
-If you have any question or contributions, please email me at [josephkdo@gmail.com@gmail.com]  
+If you have any question or contributions, please email me at josephkdo@gmail.com  
   
 ## License 
 

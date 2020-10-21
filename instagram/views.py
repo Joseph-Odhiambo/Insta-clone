@@ -24,7 +24,7 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             messages.success(request, f'Account created for {username}!')
-            return redirect('index')
+            return redirect('account')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -43,13 +43,13 @@ def index(request):
             return HttpResponseRedirect(request.url_info)
     else:
         form = PostForm()
-    params = {
+    context = {
         'images': images,
         'form': form,
         'users': users,
 
     }
-    return render(request, 'instagram/index.html', params)
+    return render(request, 'instagram/index.html', context)
 
 
 @login_required(login_url='login')
@@ -65,13 +65,13 @@ def profile(request, username):
     else:
         user_form = UpdateUserForm(instance=request.user)
         prof_form = UpdateUserProfileForm(instance=request.user.profile)
-    params = {
+    context = {
         'user_form': user_form,
         'prof_form': prof_form,
         'images': images,
 
     }
-    return render(request, 'instagram/profile.html', params)
+    return render(request, 'instagram/profile.html', context)
 
 
 @login_required(login_url='login')
@@ -88,14 +88,14 @@ def user_profile(request, username):
             follow_status = True
         else:
             follow_status = False
-    params = {
+    context = {
         'user_prof': user_prof,
         'user_posts': user_posts,
         'followers': followers,
         'follow_status': follow_status
     }
     print(followers)
-    return render(request, 'instagram/user_profile.html', params)
+    return render(request, 'instagram/user_profile.html', context)
 
 
 @login_required(login_url='login')
@@ -114,13 +114,13 @@ def post_comment(request, id):
             return HttpResponseRedirect(request.path_info)
     else:
         form = CommentForm()
-    params = {
+    context = {
         'image': image,
         'form': form,
         'is_liked': is_liked,
         'total_likes': image.total_likes()
     }
-    return render(request, 'instagram/single_post.html', params)
+    return render(request, 'instagram/single_post.html', context)
 
 
 class PostLikeToggle(RedirectView):
@@ -175,13 +175,13 @@ def like_post(request):
         image.likes.add(request.user)
         is_liked = False
 
-    params = {
+    context = {
         'image': image,
         'is_liked': is_liked,
         'total_likes': image.total_likes()
     }
     if request.is_ajax():
-        html = render_to_string('instagram/like_section.html', params, request=request)
+        html = render_to_string('instagram/like_section.html', context, request=request)
         return JsonResponse({'form': html})
 
 
@@ -192,11 +192,11 @@ def search_profile(request):
         results = Profile.search_profile(name)
         print(results)
         message = f'name'
-        params = {
+        context = {
             'results': results,
             'message': message
         }
-        return render(request, 'instagram/results.html', params)
+        return render(request, 'instagram/results.html', context)
     else:
         message = "You haven't searched for any image category"
     return render(request, 'instagram/results.html', {'message': message})
